@@ -1,0 +1,37 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>Concours fleches</title>
+</head>
+<body>
+
+<div id="page">
+   <div id="menu">
+      <ul>
+         <li><t:pageLink page="Index">Index</t:pageLink></li>
+         <li>Concours
+            <ul>
+               <li><t:pageLink page="concours/FormConcours" t:context="literal:new">Créer un concours</t:pageLink></li>
+               <li><t:pageLink page="concours/ListeConcours">Liste des concours</t:pageLink></li>
+            </ul>
+         </li>
+         <li>Archers
+            <ul>
+               <li><t:pageLink page="archer/FormArcher" t:context="literal:new">Créer un archer</t:pageLink></li>
+               <li><t:pageLink page="archer/ListeArchers">Liste des archers</t:pageLink></li>
+            </ul>
+         </li>
+         <li>Clubs
+            <ul>
+               <li><t:pageLink page="club/FormClub" t:context="literal:new">Créer un club</t:pageLink></li>
+               <li><t:pageLink page="club/ListeClubs">Liste des clubs</t:pageLink></li>
+            </ul>
+         </li>
+      </ul>
+   </div>
+   <div id="contenu">
+      <t:body />
+   </div>
+</div>
+	
+</body>
+</html>

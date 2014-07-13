@@ -1,0 +1,31 @@
+/* input des scores */
+#concoursForm input[type="text"]  {
+	width: 80px;
+	text-align: right;
+}
+#ajouterCibleBouton {
+   margin-left: 5px;
+}
+
+img {
+   margin-left: 5px;
+   margin-right: 5px
+}
+
+.categorieAge {
+   text-align: center;
+}
+
+#formZone {
+	position: fixed;
+   width: 80%;
+   top: 100px;
+   font-family: Arial, sans-serif;
+   font-size: 14px;
+   font-weight: bold;
+   color: red;
+   background-color: #FEFFA3;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+}

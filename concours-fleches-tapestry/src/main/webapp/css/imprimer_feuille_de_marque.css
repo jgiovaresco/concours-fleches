@@ -1,0 +1,138 @@
+@page {
+   size: landscape;
+}
+
+div.cible {
+   page-break-after: always;
+}
+
+div.feuille {
+   font-size: 12pt;
+   font-family: Arial;
+}
+
+div.entete {
+   display: table;
+}
+
+div.logo {
+   display: table-cell;
+   width: 500px;
+}
+
+div.archer {
+   display: table-cell;
+   vertical-align: top;
+}
+
+div.archer table {
+   width: 600px;
+   font-size: 11pt;
+}
+
+div.archer table th {
+   text-align: left;
+   font-variant: small-caps;
+}
+
+td.nomCible {
+   font-size: 16px;
+   font-weight: bold;
+}
+
+td.nomArcher {
+   font-size: 16px;
+   font-weight: bold;
+}
+
+p.organisateur {
+   margin-top: 50px;
+   padding: 0px;
+   font-size: 16px;
+   font-variant: small-caps;
+   font-weight: bold;
+}
+
+div.points {
+   display: table-cell;
+}
+
+div.points p {
+   margin: 0px;
+}
+
+div.points table {
+   border: 1px solid black;
+   font-size: 14px;
+}
+
+div.points table th {
+   border: 1px solid black;
+   font-weight: normal;
+   width: 70px;
+}
+
+div.points table td {
+   border: 1px solid black;
+}
+
+div.serie1 {
+   display: table-cell;
+   padding-right: 5px;
+}
+
+div.serie2 {
+   display: table-cell;
+   padding-left: 5px;
+}
+
+div.departager {
+   width: 300px;
+   margin-left: auto;
+   margin-right: auto;
+   border: 1px solid black;
+   text-align: center;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+div.bas_page {
+   display: table;
+}
+
+div.signature_archer {
+   display: table-cell;
+   height: 50px;
+   width: 180px;
+   border: 1px solid black;
+   vertical-align: top;
+   padding: 5px;
+}
+
+div.total_points {
+   display: : table-cell;
+   border: 1px solid black;
+   padding: 5px;
+   margin-left: 25px;
+   margin-right: 25px;
+}
+
+div.total_points th {
+   border: 1px solid black;
+   font-weight: normal;
+   text-align: left;
+   width: 200px;
+}
+
+div.total_points td {
+   border: 1px solid black;
+   width: 250px;
+}
+
+div.signature_marqueur {
+   display: table-cell;
+   width: 180px;
+   border: 1px solid black;
+   vertical-align: top;
+   padding: 5px;
+}

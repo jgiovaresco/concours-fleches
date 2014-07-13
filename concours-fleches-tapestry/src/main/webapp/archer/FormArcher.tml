@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<t:if test="creerFormulaire">
+   <h1>${message:creation-titre-page}</h1>
+   
+   <t:parameter t:name="else">
+      <h1>${message:modification-titre-page}</h1>
+   </t:parameter>
+</t:if>
+
+<t:form t:id="archerForm" t:clientValidation="false">
+   <t:errors/>
+   
+   <fieldset>
+      <legend>${message:information-fieldset}</legend>
+      <p>
+         <t:label t:for="prenom" /> 
+         <input type="text" t:type="textfield" t:id="prenom" t:validate="required" t:value="archer.prenom" />
+      </p>
+      <p>
+         <t:label t:for="nom" /> 
+         <input type="text" t:type="textfield" t:id="nom" t:validate="required" t:value="archer.nom" />
+      </p>
+      <p>
+         <t:label t:for="genre" />
+         <t:radiogroup t:id="genre" t:value="genreSelectionne">
+            <t:radio t:id="homme" t:value="homme" /> <t:label class="label-radio-button" for="homme"/>
+            <t:radio t:id="femme" t:value="femme" /> <t:label class="label-radio-button" for="femme"/>
+         </t:radiogroup>
+      </p>
+      <p>
+         <t:label t:for="dateNaissance" /> 
+         <input type="text" t:type="datefield" t:id="dateNaissance" t:validate="required" t:value="archer.dateNaissance" />
+      </p>
+      <p>
+         <t:label t:for="adresse" /> 
+         <input type="text" t:type="textfield" t:id="adresse" t:value="archer.adresse" />
+      </p>
+      <p>
+         <t:label t:for="codePostal" /> 
+         <input type="text" t:type="textfield" t:id="codePostal" t:value="archer.codePostal" />
+      </p>
+      <p>
+         <t:label for="ville" /> 
+         <input type="text" t:type="textfield" t:id="ville" t:value="archer.ville" />
+      </p>
+   </fieldset>
+   
+   <fieldset>
+      <legend>${message:archer-fieldset}</legend>
+      <p>
+         <t:label for="numeroLicence" /> 
+         <input type="text" t:type="textfield" t:id="numeroLicence" t:validate="required" t:value="archer.numeroLicence" />
+      </p>
+      <p>
+         <t:label for="club" />
+         <t:select t:type="select" t:id="club" t:value="clubSelectionne"
+              t:model="clubsSelectionModel" t:encoder="clubsValueEncoder" t:blankOption="always" t:validate="required" />
+         <t:actionLink t:id="selectionnerClubLien">${message:selectionnerClubLien}</t:actionLink>
+      </p>
+      <p>
+         <t:label for="typeArc" />
+         <t:select t:type="select" t:id="typeArc" t:value="typeArcSelectionne"
+              t:model="typeArcSelectModel" t:blankOption="always" t:validate="required" />
+      </p>
+      <p>
+         <t:label for="handisport" />
+         <t:checkbox t:id="handisport" t:value="archer.handisport" t:validate="required" />
+      </p>
+   </fieldset>
+   <p>
+      <label class="form_label_nostyle">&nbsp;</label> 
+      <t:if test="creerFormulaire">
+         <input type="submit" t:type="submit" t:id="creerBouton" value="${message:creerBouton}" />
+         <input type="submit" t:type="submit" t:id="reinitialiserBouton" value="${message:reinitialiserBouton}" />
+      
+         <t:parameter t:name="else">
+            <input type="submit" t:type="submit" t:id="modifierBouton" value="${message:modifierBouton}" />   
+         </t:parameter>
+      </t:if>
+   </p>
+</t:form>
+</t:layout>

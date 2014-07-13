@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>fr.egiov</groupId>
+		<artifactId>concours-fleches</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.egiov.concours-fleches</groupId>
+	<artifactId>concours-fleches-tapestry</artifactId>
+	<packaging>war</packaging>
+	<name>concours-fleches-tapestry Tapestry 5 Application</name>
+	<version>${webapp-tapestry.version}</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>fr.egiov.concours-fleches</groupId>
+			<artifactId>concours-fleches-core</artifactId>
+			<version>${core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-core</artifactId>
+			<version>${tapestry-release-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-spring</artifactId>
+			<version>${tapestry-release-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>concours-fleches</finalName>
+	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>tapestry-snapshots</id>
+			<url>http://tapestry.formos.com/maven-snapshot-repository/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>

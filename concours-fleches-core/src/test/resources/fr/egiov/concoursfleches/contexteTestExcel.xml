@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+   <bean id="inMemoryHsqldbDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+      <property name="url" value="jdbc:hsqldb:mem:concours-fleches"/>
+      <property name="username" value="sa"/>
+      <property name="password" value=""/>
+      <property name="maxActive" value="50"/>
+      <property name="maxIdle" value="30"/>
+      <property name="maxWait" value="1000"/>
+      <property name="poolPreparedStatements" value="true"/>
+      <property name="maxOpenPreparedStatements" value="0"/>
+   </bean>
+   
+   <bean id="hsqldbDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+      <property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+      <property name="url" value="jdbc:hsqldb:hsql://servy/concours-fleches" />
+      <property name="username" value="sa" />
+      <property name="password" value="" />
+      <property name="maxActive" value="50" />
+      <property name="maxIdle" value="30" />
+      <property name="maxWait" value="1000" />
+      <property name="poolPreparedStatements" value="true" />
+      <property name="maxOpenPreparedStatements" value="0" />
+   </bean>
+
+   <bean id="dataSourceFactory" class="fr.egiov.concoursfleches.domaine.configuration.DataSourceFactory"
+      init-method="init">
+      <property name="hsqldbDataSource">
+         <ref bean="hsqldbDataSource" />
+      </property>
+      <property name="inMemoryHsqldbDataSource">
+         <ref bean="inMemoryHsqldbDataSource" />
+      </property>
+   </bean>
+
+   <bean id="dataSource" factory-bean="dataSourceFactory" factory-method="getDataSource" />
+
+   <bean id="hibernateJpaVendorAdapter" factory-bean="dataSourceFactory" factory-method="getHibernateJpaVendorAdapter" />
+
+   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource">
+         <ref bean="dataSource" />
+      </property>
+      <property name="jpaVendorAdapter">
+         <ref bean="hibernateJpaVendorAdapter" />
+      </property>
+      <property name="persistenceXmlLocation">
+         <value>classpath:persistence-jpa.xml</value>
+      </property>
+   </bean>
+
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory">
+         <ref bean="entityManagerFactory" />
+      </property>
+   </bean>
+
+   <!-- JPA annotations bean post processor -->
+   <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+   <!-- Exception translation bean post processor -->
+   <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+
+   <!--  DAO  -->
+   <tx:advice id="daoTxAdvice" transaction-manager="transactionManager">
+      <tx:attributes>
+         <tx:method name="save" propagation="MANDATORY" />
+         <tx:method name="update" propagation="MANDATORY" />
+         <tx:method name="*" propagation="REQUIRED" read-only="true" />
+      </tx:attributes>
+   </tx:advice>
+
+   <aop:config>
+      <aop:pointcut id="daoMethods" expression="execution(* fr.egiov.concoursfleches.domaine.dao.IDao*.*(..))" />
+      <aop:advisor advice-ref="daoTxAdvice" pointcut-ref="daoMethods" />
+   </aop:config>
+
+
+   <!-- Dao Jpa -->
+   <bean id="archerJpaDao" class="fr.egiov.concoursfleches.domaine.dao.jpa.ArcherDaoJpa" />
+   <bean id="clubJpaDao" class="fr.egiov.concoursfleches.domaine.dao.jpa.ClubDaoJpa" />
+   <bean id="concoursJpaDao" class="fr.egiov.concoursfleches.domaine.dao.jpa.ConcoursDaoJpa" />
+   <bean id="cibleJpaDao" class="fr.egiov.concoursfleches.domaine.dao.jpa.CibleDaoJpa" />
+
+   <!--  SERVICES  -->
+   <tx:advice id="serviceTxAdvice" transaction-manager="transactionManager">
+      <tx:attributes>
+         <tx:method name="obtenir*" propagation="REQUIRED" read-only="true" />
+         <tx:method name="*" propagation="REQUIRED" />
+      </tx:attributes>
+   </tx:advice>
+   <aop:config>
+      <aop:pointcut id="serviceMethods" expression="execution(* fr.egiov.concoursfleches.services.*Service.*(..))" />
+      <aop:advisor advice-ref="serviceTxAdvice" pointcut-ref="serviceMethods" />
+   </aop:config>
+   
+   <bean name="archerService"
+      class="fr.egiov.concoursfleches.services.impl.ArcherServiceImpl"
+      p:archerDao-ref="archerJpaDao" />
+   <bean name="clubService"
+      class="fr.egiov.concoursfleches.services.impl.ClubServiceImpl"
+      p:clubDao-ref="clubJpaDao" />
+   <bean name="concoursService"
+      class="fr.egiov.concoursfleches.services.impl.ConcoursServiceImpl"
+      p:concoursDao-ref="concoursJpaDao" />
+   <bean name="cibleService"
+      class="fr.egiov.concoursfleches.services.impl.CibleServiceImpl"
+      p:cibleDao-ref="cibleJpaDao" />
+      
+   <context:annotation-config/> 
+   <context:component-scan base-package="fr.egiov.concoursfleches"/> 
+</beans>

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+   <h1>${message:titre-page}</h1>
+
+   <t:grid t:source="clubSource" row="club" rowsPerPage="100" exclude="id"
+      reorder="nom, ville, departement" add="actions">
+
+      <t:parameter name="actionsCell">
+         <t:if test="selectionnerAction">
+            <t:actionlink t:id="selectionnerLien" context="club.id">${message:selectionner-lien}</t:actionlink>
+
+            <t:parameter t:name="else">
+               <t:pageLink t:page="club/FormClub" context="club.id">${message:detail-lien}</t:pageLink>
+            </t:parameter>
+         </t:if>
+      </t:parameter>
+
+   </t:grid>
+
+</t:layout>

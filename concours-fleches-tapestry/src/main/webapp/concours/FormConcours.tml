@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<t:if test="creerFormulaire">
+   <h1>${message:creation-titre-page}</h1>
+   
+   <t:parameter t:name="else">
+      <h1>${message:modification-titre-page}</h1>
+   </t:parameter>
+</t:if>
+
+<t:form t:id="concoursForm" t:clientValidation="false">
+   <t:errors/>
+   
+   <fieldset>
+      <legend>${message:information-fieldset}</legend>
+      <p>
+         <t:label for="club" />
+         <t:select t:type="select" t:id="club" t:value="clubSelectionne"
+              t:model="clubsSelectionModel" t:encoder="clubsValueEncoder" t:blankOption="always" t:validate="required" />
+         <t:actionLink t:id="selectionnerClubLien">${message:selectionnerClubLien}</t:actionLink>
+      </p>
+      <p>
+         <t:label t:for="typeConcours" /> 
+         <input type="text" t:type="textfield" t:id="typeConcours" t:validate="required" t:value="concours.typeConcours" />
+      </p>
+      <p>
+         <t:label t:for="date" /> 
+         <input type="text" t:type="datefield" t:id="date" t:validate="required" t:value="concours.date" />
+      </p>
+      
+   <t:if test="creerFormulaire">
+      <p>
+         <t:label t:for="dateAPartir" /> 
+         <input type="text" t:type="datefield" t:id="dateAPartir" t:value="date" />
+      </p>
+   </t:if>
+   </fieldset>
+
+   <p>
+      <label class="form_label_nostyle">&nbsp;</label>
+      <t:if test="creerFormulaire">
+         <input type="submit" t:type="submit" t:id="creerNouveauBouton" value="${message:creerNouveauBouton}" /> 
+         <input type="submit" t:type="submit" id="creerBouton" t:id="creerBouton" value="${message:creerBouton}" />
+      
+         <t:parameter t:name="else">
+            <input type="submit" t:type="submit" t:id="modifierBouton" value="${message:modifierBouton}" />
+         </t:parameter>
+      </t:if>
+   </p>
+</t:form>
+</t:layout>

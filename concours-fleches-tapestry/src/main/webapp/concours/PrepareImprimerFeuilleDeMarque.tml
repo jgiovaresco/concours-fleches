@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<h1>${message:titre-page}</h1>
+<t:form t:id="concoursForm" t:clientValidation="false">
+   <t:errors/>
+   
+   <p>
+      <label class="form_label_nostyle">&nbsp;</label> 
+      <input type="submit" t:type="submit" t:id="imprimer" value="${message:imprimerBouton}" /> 
+   </p>
+   <p>
+      <t:actionlink t:id="toutselectionnerLien">${message:toutselectionner-lien}</t:actionlink> &nbsp;
+      <t:actionlink t:id="toutdeselectionnerLien">${message:toutdeselectionner-lien}</t:actionlink>
+   </p>
+   <t:grid t:source="cibles" row="cible" rowsPerPage="100"
+         model="beanModel"
+         exclude="selectionnee" 
+         add="nomArcher, action"
+         reorder="nom, nomArcher">
+      
+      <t:parameter name="nomArcherCell">
+         ${cible.participant.archer.nom} ${cible.participant.archer.prenom}
+      </t:parameter>
+      <t:parameter name="actionCell">
+         <t:checkbox t:id="selectionner" t:value="cible.selectionnee" />
+      </t:parameter>
+   </t:grid>
+   
+</t:form>
+</t:layout>

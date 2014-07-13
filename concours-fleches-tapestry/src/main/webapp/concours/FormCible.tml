@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<h1>${message:titre-page}</h1>
+
+
+<t:form t:id="cibleForm" t:clientValidation="false">
+   <fieldset>
+      <legend>${message:information-fieldset}</legend>
+      <p>
+         <t:label t:for="nom" /> 
+         <input type="text" t:type="textfield" t:id="nom" t:validate="required" t:value="cible.nom" />
+      </p>
+      <p>
+         <t:label for="archer" />
+         <t:select t:type="select" t:id="archer" t:value="archerSelectionne"
+              t:model="archersSelectionModel" t:encoder="archersValueEncoder" t:blankOption="always" t:validate="required" />
+         <t:actionLink t:id="selectionnerArcherLien">${message:selectionnerArcherLien}</t:actionLink>
+      </p>
+   </fieldset>
+
+   <p>
+      <label class="form_label_nostyle">&nbsp;</label> 
+      <t:if test="creerFormulaire">
+         <input type="submit" t:type="submit" t:id="ajouterBouton" value="${message:ajouterBouton}" />
+         <input type="submit" t:type="submit" t:id="reinitialiserBouton" value="${message:reinitialiserBouton}" />
+      
+         <t:parameter t:name="else">
+            <input type="submit" t:type="submit" t:id="modifierBouton" value="${message:modifierBouton}" />   
+         </t:parameter>
+      </t:if>
+   </p>
+</t:form>
+</t:layout>

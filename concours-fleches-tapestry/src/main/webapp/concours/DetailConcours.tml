@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<t:form t:id="concoursForm" t:clientValidation="false" t:zone="formZone">
+   <h1>${message:titre-page} ${concours.typeConcours} - <t:output value="concours.date" format="prop:fullDateFormat"/></h1>
+   <p>
+      <t:pageLink t:page="concours/FormConcours" t:context="concours.id">${message:modifierInformationsConcours-lien}</t:pageLink>
+   </p>
+   <p>
+      <input type="submit" t:type="submit" t:id="enregistrerBouton" value="${message:enregistrer-bouton}" />
+      <input type="submit" t:type="submit" id="ajouterCibleBouton" t:id="ajouterCibleBouton" value="${message:ajouterCible-bouton}" />
+      
+   </p>
+   <p>
+      <t:pageLink t:page="concours/ImprimerPasDeTir" t:context="concours.id">${message:imprimerPasDeTir-lien}</t:pageLink>
+      &nbsp;
+      <t:actionLink t:id="calculerResultatsLien">${message:resultats-lien}</t:actionLink>
+      &nbsp;
+      <t:actionLink t:id="imprimerFeuilleDeMarqueLien">${message:imprimerFeuilleDeMarque-lien}</t:actionLink>
+   </p>
+
+   <input type="hidden" id="nbCibles" value="${nbCibles}" />
+
+   <t:grid t:source="cibles" row="cible" rowsPerPage="100"
+         model="beanModel" 
+         exclude="id, participant, concours"
+         add="nomArcher, arc, categorieAge, club, action"
+         reorder="nom, nomArcher, arc, categorieAge, club, serie1, serie2, total">
+      
+      <t:parameter name="nomArcherCell">
+         ${cible.participant.archer.nom} ${cible.participant.archer.prenom}
+      </t:parameter>
+      <t:parameter name="arcCell">
+         ${cible.participant.typeArc}
+      </t:parameter>
+      <t:parameter name="categorieAgeCell">
+         ${cible.participant.categorieAge}
+      </t:parameter>
+      <t:parameter name="clubCell">
+         ${cible.participant.nomclub}
+      </t:parameter>
+      <t:parameter name="serie1Cell">
+         <input type="text" t:type="textfield" t:id="serie1" t:value="cible.serie1" />
+      </t:parameter>
+      <t:parameter name="serie2Cell">
+         <input type="text" t:type="textfield" t:id="serie2" t:value="cible.serie2" />
+      </t:parameter>
+      <t:parameter name="totalCell">
+         <input type="text" t:type="textfield" t:id="total" t:value="cible.total" t:disabled="true" />
+      </t:parameter>
+      <t:parameter name="departageCell">
+         <input type="text" t:type="textfield" t:id="departage" t:value="cible.departage" />
+      </t:parameter>
+      <t:parameter name="actionCell">
+         <t:pageLink page="concours/FormCible" context="cible.id"><img src="${imageModifier}" alt="${message:modifierCibleLien}" title="${message:modifierCible-lien}" /></t:pageLink> 
+         <t:actionLink t:id="supprimerCibleLien" context="cible.id"><img src="${imageSupprimer}" alt="${message:supprimerCibleLien}" title="${message:supprimerCible-lien}" /></t:actionLink>
+      </t:parameter>
+   </t:grid>
+   
+   <t:zone t:id="formZone" style="display: none;">
+   Cibles enregistrées.
+   </t:zone>
+</t:form>
+
+</t:layout>

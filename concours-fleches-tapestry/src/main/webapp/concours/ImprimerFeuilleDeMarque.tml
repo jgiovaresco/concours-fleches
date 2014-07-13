@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>Feuille de marque</title>
+</head>
+<body>
+<div t:type="loop" t:source="cibles" t:value="cible" class="cible">
+   <div class="feuille">
+      <div class="entete">
+         <div class="logo">
+            <img src="${imageLogo1}" alt="Logo Ufolep" />
+            
+            <p class="organisateur">
+               ${concours.clubOrganisateur.nom}
+            </p> 
+         </div>
+         
+         <div class="archer">
+            <table>
+               <tr>
+                  <th colspan="2">Concours ${concours.typeConcours}</th>
+               </tr>
+               <tr>
+                  <th>Date</th>
+                  <td><t:output value="concours.date" format="prop:shortDateFormat"/></td>
+               </tr>
+               <tr>
+                  <th>N° de cible</th>
+                  <td class="nomCible">${cible.nom}</td>
+               </tr>
+               <tr>
+                  <th>Nom Prénom</th>
+                  <td class="nomArcher">${cible.participant.archer.nom} ${cible.participant.archer.prenom}</td>
+               </tr>
+               <tr>
+                  <th>Club</th>
+                  <td>${cible.participant.nomClub}</td>
+               </tr>
+               <tr>
+                  <th>Catégorie</th>
+                  <td>${cible.participant.categorieAge} / ${cible.participant.archer.genre.label} / ${cible.participant.typeArc}</td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      
+      <div class="points">
+         <div class="serie1">
+            <p>Première Série</p>
+            <table>
+               <tr>
+                  <th>&nbsp;</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>Total</th>
+                  <th>Cumul</th>
+               </tr>
+               <tr>
+                  <th>volée 1</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 2</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 4</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 5</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 6</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 7</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 8</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 9</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 10</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+            </table>
+         </div>
+         
+         <div class="serie2">
+            <p>Deuxième Série</p>
+            <table>
+               <tr>
+                  <th>&nbsp;</th>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>Total</th>
+                  <th>Cumul</th>
+               </tr>
+               <tr>
+                  <th>volée 1</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 2</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 3</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 4</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 5</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 6</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 7</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 8</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 9</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+               <tr>
+                  <th>volée 10</th>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+               </tr>
+            </table>
+         </div>
+      </div>
+   </div>
+   <div class="departager">
+      10 X .......... / 9 X .......... / 8 X .......... 
+   </div>
+   
+   <div class="bas_page">
+      <div class="signature_archer">
+      signature archer : 
+      </div>
+      
+      <div class="total_points">
+         <table>
+         <tr>
+            <th>Première Série</th>
+            <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <th>Deuxième Série</th>
+            <td>&nbsp;</td>
+         </tr>
+         <tr>
+            <th>Total Concours</th>
+            <td>&nbsp;</td>
+         </tr>
+         </table>
+      </div>
+      
+      <div class="signature_marqueur">
+      signature marqueur : 
+      </div>
+   </div>
+</div>
+</body>
+</html>

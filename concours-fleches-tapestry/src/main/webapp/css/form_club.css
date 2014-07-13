@@ -1,0 +1,17 @@
+#clubForm {
+	width: 500px;
+}
+
+#clubForm p {
+	margin: 2px 0;
+}
+
+/* Label */
+#clubForm label {
+	background-color: #FFCC66;
+	width: 110px;
+}
+
+#clubForm .form_label_nostyle {
+	background: none;
+}

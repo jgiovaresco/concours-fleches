@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+   <h1>${message:titre-page}</h1>
+
+   <p><t:pageLink t:page="archer/ImprimerListeArchers">${message:imprimer-lien}</t:pageLink>
+   </p>
+
+   <t:if test="erreur">
+      <div class="erreur">
+      <div>Erreur(s) :</div>
+      <ul>
+         <li>${messageErreur}</li>
+      </ul>
+      </div>
+   </t:if>
+
+   <t:grid t:source="archers" row="archer" rowsPerPage="500" model="beanModel"
+      exclude="nomComplet, prenom, id, codePostal, adresse, ville, handisport"
+      reorder="nom, numeroLicence, genre, dateNaissance, age, categorieAge, typeArc, nomClub"
+      add="actions">
+
+      <t:parameter name="nomCell">
+      ${archer.nom} ${archer.prenom}
+      </t:parameter>
+
+      <t:parameter name="dateNaissanceCell">
+         <t:output value="archer.dateNaissance" format="prop:shortDateFormat" />
+      </t:parameter>
+
+      <t:parameter name="categorieAgeCell">
+      ${archer.categorieAge.label}
+      </t:parameter>
+
+      <t:parameter name="actionsCell">
+         <t:if test="selectionnerAction">
+            <t:actionlink t:id="selectionnerArcherLien" context="archer.id">${message:selectionner-lien}</t:actionlink>
+
+            <t:parameter t:name="else">
+               <t:pageLink t:page="archer/FormArcher" context="archer.id">
+                  <img src="${imageModifier}" alt="${message:detail-lien}"
+                     title="${message:detail-lien}" />
+               </t:pageLink>
+
+               <t:actionLink t:id="supprimerArcherLien" context="archer.id"
+                  t:mixins="confirm"
+                  t:message="${message:supprimer-confirmation}">
+                  <img src="${imageSupprimer}" alt="${message:supprimer-lien}"
+                     title="${message:supprimer-lien}" />
+               </t:actionLink>
+            </t:parameter>
+         </t:if>
+      </t:parameter>
+   </t:grid>
+
+</t:layout>

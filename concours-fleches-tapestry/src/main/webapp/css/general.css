@@ -1,0 +1,93 @@
+/* fieldset , legend */
+fieldset {
+   margin-bottom: 10px;
+   border: #CCC 1px solid;
+}
+
+fieldset:hover {
+   
+}
+
+fieldset legend {
+   border: #CCC 1px solid;
+   padding: 5px;
+   font-size: 16px;
+   font-weight: bold;
+   color: #999;
+}
+
+/* Label */
+label {
+   display: block;
+   float: left;
+   padding-right: 1%;
+   text-align: right;
+   letter-spacing: 1px;
+}
+
+/* Input */
+input[type="text"] {
+   margin-left: 1%;
+   width: 58%;
+   border: #CCC 1px solid;
+}
+
+select {
+   margin-left: 1%;
+   width: 30%;
+   border: #CCC 1px solid;
+}
+
+input:hover,select:hover,input:focus,select:focus {
+   border: #999 1px solid;
+   background-color: #DDEEFF;
+}
+
+input[type="button"] {
+   border: #DDEEFF 1px solid;
+   margin-left: 10px;
+}
+
+/* button submit */
+input[type="submit"] {
+   border: #DDEEFF 1px solid;
+}
+
+input[type="submit"]:hover {
+   background-color: #66CC33;
+   cursor: pointer;
+}
+
+input[type="reset"] {
+   border: #DDEEFF 1px solid;
+}
+
+input[type="reset"]:hover {
+   background-color: #E6484D;
+   cursor: pointer;
+}
+
+/******** Boite d'erreurs ****************/
+.erreur {
+   border: 1px solid red;
+   margin: 4px 0;
+   padding: 0;
+   width: 550px;
+   margin-top: 0px;
+   margin-bottom: 16px;
+}
+
+.erreur div {
+   background-color: red;
+   color: white;
+   display: block;
+   font-weight: bold;
+   margin: 0;
+   padding: 2px;
+}
+
+.erreur ul {
+   background-color: white;
+   color: red;
+   margin: 2px 0;
+}

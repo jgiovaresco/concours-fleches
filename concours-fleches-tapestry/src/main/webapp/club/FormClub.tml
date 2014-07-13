@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<t:if test="creerFormulaire">
+   <h1>${message:creation-titre-page}</h1>
+   
+   <t:parameter t:name="else">
+      <h1>${message:modification-titre-page}</h1>
+   </t:parameter>
+</t:if>
+
+<t:form t:id="clubForm" t:clientValidation="false">
+   <fieldset>
+      <legend>${message:information-fieldset}</legend>
+      <p>
+         <t:label t:for="nom" /> 
+         <input type="text" t:type="textfield" t:id="nom" t:validate="required" t:value="club.nom" />
+      </p>
+      <p>
+         <t:label t:for="ville" /> 
+         <input type="text" t:type="textfield" t:id="ville" t:validate="required" t:value="club.ville" />
+      </p>
+      <p>
+         <t:label t:for="departement" /> 
+         <input type="text" t:type="textfield" t:id="departement" t:validate="required" t:value="club.departement" />
+      </p>
+   </fieldset>
+
+   <p>
+      <label class="form_label_nostyle">&nbsp;</label> 
+      <t:if test="creerFormulaire">
+         <input type="submit" t:type="submit" t:id="creerBouton" value="${message:creerBouton}" />
+         <input type="submit" t:type="submit" t:id="reinitialiserBouton" value="${message:reinitialiserBouton}" />
+      
+         <t:parameter t:name="else">
+            <input type="submit" t:type="submit" t:id="modifierBouton" value="${message:modifierBouton}" />   
+         </t:parameter>
+      </t:if>
+   </p>
+</t:form>
+</t:layout>

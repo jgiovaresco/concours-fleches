@@ -1,0 +1,32 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>Archers</title>
+</head>
+<body>
+<h1>${message:titre-page}</h1>
+<table>
+   <thead>
+      <tr>
+         <th>${message:nom-label}</th>
+         <th>${message:prenom-label}</th>
+         <th>${message:genre-label}</th>
+         <th>${message:dateNaissance-label}</th>
+         <th>${message:numeroLicence-label}</th>
+         <th>${message:club-label}</th>
+         <th>${message:typeArc-label}</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr t:type="loop" t:source="archers" t:value="archer">
+         <td>${archer.nom}</td>
+         <td>${archer.prenom}</td>
+         <td>${archer.genre}</td>
+         <td><t:output value="archer.dateNaissance" format="prop:shortDateFormat"/></td>
+         <td>${archer.numeroLicence}</td>
+         <td>${archer.club.nom}</td>
+         <td>${archer.typeArc}</td>
+      </tr>
+   </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,8 @@
+table {
+   width: 100%;
+}
+
+th {
+   text-align: left;
+   border-bottom: 2px solid black;
+}

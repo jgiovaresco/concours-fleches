@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+   <h1>${message:titre-page}</h1>
+
+   <p>
+      <t:actionLink t:id="imprimerResultatsLien">${message:imprimerResultats-lien}</t:actionLink>
+      &nbsp;
+      <a href="${contextPath}/excel/generer?concoursId=${concours.id}">${message:fichierExcel-lien}</a>
+   </p>
+   
+   <div t:type="loop" t:source="categoriesAge" t:value="categorieAge">
+   <t:if test="categorieAgeNonVide">
+      <h2>${categorieAge.label}</h2>
+      
+      <div t:type="loop" t:source="categoriesArcher" t:value="categorieArcher">
+      <t:if test="categorieArcherNonVide">
+         <h3>${categorieArcher.label}</h3>
+      
+         <table class="resultat">
+         <thead>
+            <tr>
+               <th>Position</th>
+               <th>Archer</th>
+               <th>Club</th>
+               <th>Serie 1</th>
+               <th>Serie 2</th>
+               <th>Score</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr t:type="loop" t:source="scores" t:value="score" t:index="position">
+               <td class="position">${positionLabel}</td>
+               <td class="participant">${score.participant.archer.nom} ${score.participant.archer.prenom}</td>
+               <td class="club">${score.participant.nomclub}</td>
+               <td class="score">${score.cible.serie1}</td>
+               <td class="score">${score.cible.serie2}</td>
+               <td class="score">${score.total}</td>
+            </tr>
+         </tbody>
+         </table>
+      </t:if>
+      </div>
+   </t:if>
+   </div>
+</t:layout>

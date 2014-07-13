@@ -1,0 +1,33 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+   <h1>${message:titre-page}</h1>
+
+   <t:if test="erreur">
+      <div class="erreur">
+      <div>Erreur(s) :</div>
+      <ul>
+         <li>${messageErreur}</li>
+      </ul>
+      </div>
+   </t:if>
+
+   <t:grid t:source="concoursSource" rowPerPage="20" row="concours"
+      reorder="date, typeConcours" exclude="id" add="actions">
+
+      <t:parameter name="dateCell">
+         <t:output value="concours.date" format="prop:fullDateFormat" />
+      </t:parameter>
+
+      <t:parameter name="actionsCell">
+         <t:pageLink t:page="concours/DetailConcours" context="concours.id">
+            <img src="${imageModifier}" alt="${message:detail-lien}"
+               title="${message:detail-lien}" />
+         </t:pageLink>
+         <t:actionLink t:id="supprimerConcoursLien" context="concours.id"
+            t:mixins="confirm" t:message="${message:supprimer-confirmation}">
+            <img src="${imageSupprimer}" alt="${message:supprimer-lien}"
+               title="${message:supprimer-lien}" />
+         </t:actionLink>
+      </t:parameter>
+   </t:grid>
+
+</t:layout>

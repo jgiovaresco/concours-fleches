@@ -1,0 +1,30 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<head>
+<title>Pas de tir</title>
+</head>
+<body>
+<h1>${message:titre-page} <t:output value="concours.date" format="prop:fullDateFormat"/></h1>
+<table>
+   <thead>
+      <tr>
+         <th>${message:entete-cible}</th>
+         <th>${message:entete-archer}</th>
+         <th>${message:entete-categorie}</th>
+         <th>${message:entete-genre}</th>
+         <th>${message:entete-arc}</th>
+         <th>${message:entete-club}</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr t:type="loop" t:source="cibles" t:value="cible">
+         <td>${cible.nom}</td>
+         <td>${cible.participant.archer.nom} ${cible.participant.archer.prenom}</td>
+         <td>${cible.participant.categorieAge}</td>
+         <td>${cible.participant.archer.genre}</td>
+         <td>${cible.participant.typeArc}</td>
+         <td>${cible.participant.nomClub}</td>
+      </tr>
+   </tbody>
+</table>
+</body>
+</html>

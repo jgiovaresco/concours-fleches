@@ -1,0 +1,21 @@
+#cibleForm {
+	width: 500px;
+}
+
+#cibleForm p {
+	margin: 2px 0;
+}
+
+/* Label */
+#cibleForm label {
+	background-color: #FFCC66;
+	width: 130px;
+}
+
+#cibleForm .form_label_nostyle {
+	background: none;
+}
+
+#cibleForm a {
+  margin-left: 10px;
+}

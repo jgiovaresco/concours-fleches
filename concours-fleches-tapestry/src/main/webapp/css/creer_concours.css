@@ -1,0 +1,35 @@
+#concoursForm {
+   width: 500px;
+}
+
+#concoursForm p {
+   margin: 2px 0;
+}
+
+/* Label */
+#concoursForm label {
+   background-color: #FFCC66;
+   width: 150px;
+}
+
+#concoursForm .form_label_nostyle {
+   background: none;
+}
+
+/* input */
+#concoursForm input[type="text"] {
+   width: 130px;
+   margin-left: 5%;
+}
+
+#concoursForm select {
+   margin-left: 5%;
+}
+
+#creerBouton {
+   margin-left: 10px;
+}
+
+#concoursForm a {
+   margin-left: 10px;
+}

@@ -1,0 +1,9 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+	<h2>Index</h2>
+   
+   <img src="${imageLogo1}" alt="Logo Ufolep" /> 
+   <br />
+   <img src="${imageLogo2}" alt="Logo Ufolep" /> 
+   <br />
+   <img src="${imageLogo3}" alt="Logo Ufolep" />
+</t:layout>

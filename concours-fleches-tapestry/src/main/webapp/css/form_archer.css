@@ -1,0 +1,31 @@
+#archerForm {
+	width: 550px;
+}
+
+#archerForm p {
+	margin: 2px 0;
+}
+
+/* Label */
+#archerForm label {
+	background-color: #FFCC66;
+	width: 150px;
+}
+
+#archerForm .label-radio-button {
+	background: none;
+	float:none;
+	display: inline;
+}
+
+#archerForm .form_label_nostyle {
+	background: none;
+}
+
+#archerForm select {
+	width: 40%;
+}
+
+#archerForm a {
+	margin-left: 10px;
+}
